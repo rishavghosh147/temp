@@ -47,4 +47,4 @@ class User_login(Resource): #done
     def login_token(self,email,role):
         payload={"email":email,"role":f'{role}',"login":True}
         encode=jwt.encode(payload,otp_virify_secret_key,algorithm='HS256')
-        return encode.decode('utf-8')
+        return encode #.decode('utf-8')
