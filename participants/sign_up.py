@@ -63,7 +63,8 @@ class user_signup(Resource): #done
 
     def otp_token(self,payload):
         bytecode=jwt.encode(payload,otp_virify_secret_key,algorithm='HS256')
-        return bytecode.decode('utf-8')
+        print(bytecode)
+        return bytecode #.decode('utf-8')
 
 def check_user(email,mobile,roll):
     user=User.query.filter(or_(User.email==email,User.mobile==mobile,User.roll==roll)).all()
