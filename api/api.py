@@ -26,7 +26,9 @@ from flask_cors import CORS
 api=Api(app)
 # CORS(app)
 # CORS(app, resources={r"/*":{"origins": "localhost"}}, methods=['POST'], headers=['Content-Type'])
-CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers=["Content-Type", "authorization", "X-Custom-Header"])
+# CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers=["Content-Type", "authorization", "X-Custom-Header"])
+CORS(app, resources={r"/*": {"origins": "*", "Access-Control-Allow-Origin": "*"}}, 
+     allow_headers=["Content-Type", "Authorization", "X-Custom-Header"])
 
 api.add_resource(User_login,'/login/') #this api is used for user login 1
 api.add_resource(user_signup,'/user_signup/') #this api is used for user sign up 1
