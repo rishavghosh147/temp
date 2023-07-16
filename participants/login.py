@@ -10,28 +10,27 @@ from key.keys import otp_virify_secret_key
 
 class User_login(Resource): #done 
     def post(self):
-        pass
-        # data=json.loads(request.data)
-        # otp=random.randint(100000,999999)
+        data=json.loads(request.data)
+        otp=random.randint(100000,999999)
 
-        # if 'roll' in data:
-        #     check=User.query.filter_by(roll=int(data['roll'])).first()
-        #     if check and check_password_hash(check.password,data['password']):
-        #         email=check.email
-        #         role=check.role_id
-        #     elif check and not check_password_hash(check.password,data['password']):
-        #         return jsonify({"error":"you entered a wrong password"})
-        #     else:
-        #         return jsonify({"error":"user does not exist"})
-        # else:
-        #     check=User.query.filter_by(email=data['email'].lower()).first()
-        #     if check and check_password_hash(check.password,data['password']):
-        #         email=data['email'].lower()
-        #         role=check.role_id
-        #     elif check and not check_password_hash(check.password,data['password']):
-        #         return jsonify({"error":"you entered a wrong password"})
-        #     else:
-        #         return jsonify({"error":"user does not exist"})
+        if 'roll' in data:
+            check=User.query.filter_by(roll=int(data['roll'])).first()
+            if check and check_password_hash(check.password,data['password']):
+                email=check.email
+                role=check.role_id
+            elif check and not check_password_hash(check.password,data['password']):
+                return jsonify({"error":"you entered a wrong password"})
+            else:
+                return jsonify({"error":"user does not exist"})
+        else:
+            check=User.query.filter_by(email=data['email'].lower()).first()
+            if check and check_password_hash(check.password,data['password']):
+                email=data['email'].lower()
+                role=check.role_id
+            elif check and not check_password_hash(check.password,data['password']):
+                return jsonify({"error":"you entered a wrong password"})
+            else:
+                return jsonify({"error":"user does not exist"})
             
         # previous=Temp_otp.query.filter_by(login_email=email).first()
         # if previous:
