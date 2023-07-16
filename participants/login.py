@@ -42,7 +42,7 @@ class User_login(Resource): #done
         db.session.add(save_otp)
         db.session.commit()
         # temp=self.login_token(email,role)
-       return jsonify({"successful":"please enter the otp"}) #,"verification": self.login_token(email, role).decode('utf-8')})
+           return jsonify({"successful":"please enter the otp"})
     
     def login_token(self,email,role):
         payload={"email":email,"role":f'{role}',"login":True}
