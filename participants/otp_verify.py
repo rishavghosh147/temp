@@ -12,6 +12,8 @@ class otp_verify(Resource): #done
             header=request.headers.get('verification')
             # header=json.loads(token)
         data=json.loads(request.data)
+        print(data)
+        print(header)
         if not data['otp']:
             return jsonify({"error":"please enter a valid otp !!!"})
         try:
