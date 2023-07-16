@@ -32,15 +32,15 @@ class User_login(Resource): #done
             else:
                 return jsonify({"error":"user does not exist"})
             
-        # previous=Temp_otp.query.filter_by(login_email=email).first()
-        # if previous:
-        #     db.session.delete(previous)
-        #     db.session.commit()
-        # msg=f"this {otp} is for login veification. please don't share with any one"
-        # send_otp('login verification',email,msg)
-        # save_otp=Temp_otp(login_email=email,otp=otp)
-        # db.session.add(save_otp)
-        # db.session.commit()
+        previous=Temp_otp.query.filter_by(login_email=email).first()
+        if previous:
+            db.session.delete(previous)
+            db.session.commit()
+        msg=f"this {otp} is for login veification. please don't share with any one"
+        send_otp('login verification',email,msg)
+        save_otp=Temp_otp(login_email=email,otp=otp)
+        db.session.add(save_otp)
+        db.session.commit()
         # return jsonify({"successful":"please enter the otp"})
     
     def login_token(self,email,role):
